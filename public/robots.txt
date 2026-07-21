@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://construtora-topleo.lovable.app/sitemap.xml
