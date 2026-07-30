@@ -1,0 +1,14 @@
+export { Header } from "./Header";
+export { Hero } from "./Hero";
+export { Stats } from "./Stats";
+export { Manifesto } from "./Manifesto";
+export { Differentials } from "./Differentials";
+export { Specialties } from "./Specialties";
+export { Process } from "./Process";
+export { Technology } from "./Technology";
+export { Gallery } from "./Gallery";
+export { Testimonials } from "./Testimonials";
+export { Faq } from "./Faq";
+export { CallToAction } from "./CallToAction";
+export { Footer } from "./Footer";
+export { FloatingWhatsApp } from "./FloatingWhatsApp";

@@ -1,0 +1,15 @@
+node_modules
+.output
+.nitro
+.vinxi
+dist
+.git
+.github
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+.vscode
+.idea
+README.md
