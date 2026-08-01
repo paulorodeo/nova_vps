@@ -9,3 +9,12 @@ export function getInitials(fullName: string) {
 export function currentYear() {
   return new Date().getFullYear();
 }
+
+/** Formata uma data ISO (YYYY-MM-DD) no padrão brasileiro. */
+export function formatDate(iso: string) {
+  const [year, month, day] = iso.split("-").map(Number);
+  if (!year || !month || !day) return iso;
+  return new Intl.DateTimeFormat("pt-BR", { dateStyle: "long", timeZone: "UTC" }).format(
+    new Date(Date.UTC(year, month - 1, day)),
+  );
+}

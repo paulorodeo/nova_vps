@@ -1,15 +1,11 @@
 import type { ReactNode } from "react";
 
-import { Header, Footer, FloatingWhatsApp } from "@/blocks/landing";
+import { SiteLayout } from "@/layouts/SiteLayout";
 
-/** Layout de landing pages (header fixo + footer + CTA flutuante). */
+/**
+ * Layout de landing pages.
+ * Mantido como alias de `SiteLayout` para preservar a Home inalterada.
+ */
 export function LandingLayout({ children }: { children: ReactNode }) {
-  return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <Header />
-      {children}
-      <Footer />
-      <FloatingWhatsApp />
-    </div>
-  );
+  return <SiteLayout>{children}</SiteLayout>;
 }
