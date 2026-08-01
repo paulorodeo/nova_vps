@@ -13,7 +13,10 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as QuemSomosRouteImport } from './routes/quem-somos'
 import { Route as ProjetosRouteImport } from './routes/projetos'
+import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as EspecialidadesRouteImport } from './routes/especialidades'
+import { Route as ErroRouteImport } from './routes/erro'
+import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
@@ -38,9 +41,24 @@ const ProjetosRoute = ProjetosRouteImport.update({
   path: '/projetos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ObrigadoRoute = ObrigadoRouteImport.update({
+  id: '/obrigado',
+  path: '/obrigado',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EspecialidadesRoute = EspecialidadesRouteImport.update({
   id: '/especialidades',
   path: '/especialidades',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ErroRoute = ErroRouteImport.update({
+  id: '/erro',
+  path: '/erro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -61,7 +79,10 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
+  '/erro': typeof ErroRoute
   '/especialidades': typeof EspecialidadesRoute
+  '/obrigado': typeof ObrigadoRoute
   '/projetos': typeof ProjetosRoute
   '/quem-somos': typeof QuemSomosRoute
   '/servicos': typeof ServicosRoute
@@ -71,7 +92,10 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
+  '/erro': typeof ErroRoute
   '/especialidades': typeof EspecialidadesRoute
+  '/obrigado': typeof ObrigadoRoute
   '/projetos': typeof ProjetosRoute
   '/quem-somos': typeof QuemSomosRoute
   '/servicos': typeof ServicosRoute
@@ -82,7 +106,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contato': typeof ContatoRoute
+  '/erro': typeof ErroRoute
   '/especialidades': typeof EspecialidadesRoute
+  '/obrigado': typeof ObrigadoRoute
   '/projetos': typeof ProjetosRoute
   '/quem-somos': typeof QuemSomosRoute
   '/servicos': typeof ServicosRoute
@@ -94,7 +121,10 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contato'
+    | '/erro'
     | '/especialidades'
+    | '/obrigado'
     | '/projetos'
     | '/quem-somos'
     | '/servicos'
@@ -104,7 +134,10 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contato'
+    | '/erro'
     | '/especialidades'
+    | '/obrigado'
     | '/projetos'
     | '/quem-somos'
     | '/servicos'
@@ -114,7 +147,10 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/contato'
+    | '/erro'
     | '/especialidades'
+    | '/obrigado'
     | '/projetos'
     | '/quem-somos'
     | '/servicos'
@@ -125,7 +161,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContatoRoute: typeof ContatoRoute
+  ErroRoute: typeof ErroRoute
   EspecialidadesRoute: typeof EspecialidadesRoute
+  ObrigadoRoute: typeof ObrigadoRoute
   ProjetosRoute: typeof ProjetosRoute
   QuemSomosRoute: typeof QuemSomosRoute
   ServicosRoute: typeof ServicosRoute
@@ -164,11 +203,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjetosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/obrigado': {
+      id: '/obrigado'
+      path: '/obrigado'
+      fullPath: '/obrigado'
+      preLoaderRoute: typeof ObrigadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/especialidades': {
       id: '/especialidades'
       path: '/especialidades'
       fullPath: '/especialidades'
       preLoaderRoute: typeof EspecialidadesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/erro': {
+      id: '/erro'
+      path: '/erro'
+      fullPath: '/erro'
+      preLoaderRoute: typeof ErroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -197,7 +257,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContatoRoute: ContatoRoute,
+  ErroRoute: ErroRoute,
   EspecialidadesRoute: EspecialidadesRoute,
+  ObrigadoRoute: ObrigadoRoute,
   ProjetosRoute: ProjetosRoute,
   QuemSomosRoute: QuemSomosRoute,
   ServicosRoute: ServicosRoute,
