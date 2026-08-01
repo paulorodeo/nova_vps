@@ -5,6 +5,7 @@ import { Container } from "@/components/common/Container";
 import { PageHero } from "@/components/common/PageHero";
 import { getRoute } from "@/config/routes";
 import { findPost } from "@/constants/blog";
+import type { BlogPost } from "@/types/content";
 import { SiteLayout } from "@/layouts/SiteLayout";
 import { buildArticleJsonLd, buildBreadcrumbJsonLd, buildRouteHead } from "@/lib/seo";
 import { formatDate } from "@/utils/format";
@@ -15,7 +16,7 @@ export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
     const post = findPost(params.slug);
     if (!post) throw notFound();
-    return { post };
+    return { post: post as BlogPost };
   },
   head: ({ params, loaderData }) => {
     if (!loaderData) {
@@ -79,7 +80,7 @@ function BlogPostPage() {
               {formatDate(post.publishedAt)}
             </time>
             <div className="mt-8 space-y-5">
-              {post.body.map((p) => (
+              {post.body.map((p: string) => (
                 <p key={p} className="text-muted-foreground leading-relaxed">
                   {p}
                 </p>
