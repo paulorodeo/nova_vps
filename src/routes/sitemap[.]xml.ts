@@ -1,10 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "https://construtora-topleo.lovable.app";
+import { indexableRoutes } from "@/config/routes";
+import { publishedPosts } from "@/constants/blog";
+import { siteConfig } from "@/config/site";
+
+const BASE_URL = siteConfig.url;
 
 interface SitemapEntry {
   path: string;
+  lastmod?: string;
   changefreq?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
   priority?: string;
 }
@@ -14,13 +19,25 @@ export const Route = createFileRoute("/sitemap.xml")({
     handlers: {
       GET: async () => {
         const entries: SitemapEntry[] = [
-          { path: "/", changefreq: "weekly", priority: "1.0" },
+          ...indexableRoutes.map((r) => ({
+            path: r.path,
+            changefreq: r.changefreq,
+            priority: r.priority,
+          })),
+          // Somente posts publicados entram no sitemap.
+          ...publishedPosts.map((p) => ({
+            path: `/blog/${p.slug}`,
+            lastmod: p.publishedAt,
+            changefreq: "monthly" as const,
+            priority: "0.5",
+          })),
         ];
 
         const urls = entries.map((e) =>
           [
             `  <url>`,
             `    <loc>${BASE_URL}${e.path}</loc>`,
+            e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>` : null,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,

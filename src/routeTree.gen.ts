@@ -9,11 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as QuemSomosRouteImport } from './routes/quem-somos'
 import { Route as ProjetosRouteImport } from './routes/projetos'
+import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
+import { Route as PoliticaDeCookiesRouteImport } from './routes/politica-de-cookies'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
+import { Route as MapaDoSiteRouteImport } from './routes/mapa-do-site'
+import { Route as LgpdRouteImport } from './routes/lgpd'
 import { Route as EspecialidadesRouteImport } from './routes/especialidades'
 import { Route as ErroRouteImport } from './routes/erro'
 import { Route as ContatoRouteImport } from './routes/contato'
@@ -21,6 +26,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 
+const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
+  id: '/termos-de-uso',
+  path: '/termos-de-uso',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -41,9 +51,29 @@ const ProjetosRoute = ProjetosRouteImport.update({
   path: '/projetos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
+  id: '/politica-de-privacidade',
+  path: '/politica-de-privacidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliticaDeCookiesRoute = PoliticaDeCookiesRouteImport.update({
+  id: '/politica-de-cookies',
+  path: '/politica-de-cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ObrigadoRoute = ObrigadoRouteImport.update({
   id: '/obrigado',
   path: '/obrigado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapaDoSiteRoute = MapaDoSiteRouteImport.update({
+  id: '/mapa-do-site',
+  path: '/mapa-do-site',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LgpdRoute = LgpdRouteImport.update({
+  id: '/lgpd',
+  path: '/lgpd',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EspecialidadesRoute = EspecialidadesRouteImport.update({
@@ -82,11 +112,16 @@ export interface FileRoutesByFullPath {
   '/contato': typeof ContatoRoute
   '/erro': typeof ErroRoute
   '/especialidades': typeof EspecialidadesRoute
+  '/lgpd': typeof LgpdRoute
+  '/mapa-do-site': typeof MapaDoSiteRoute
   '/obrigado': typeof ObrigadoRoute
+  '/politica-de-cookies': typeof PoliticaDeCookiesRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/projetos': typeof ProjetosRoute
   '/quem-somos': typeof QuemSomosRoute
   '/servicos': typeof ServicosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/termos-de-uso': typeof TermosDeUsoRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -95,11 +130,16 @@ export interface FileRoutesByTo {
   '/contato': typeof ContatoRoute
   '/erro': typeof ErroRoute
   '/especialidades': typeof EspecialidadesRoute
+  '/lgpd': typeof LgpdRoute
+  '/mapa-do-site': typeof MapaDoSiteRoute
   '/obrigado': typeof ObrigadoRoute
+  '/politica-de-cookies': typeof PoliticaDeCookiesRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/projetos': typeof ProjetosRoute
   '/quem-somos': typeof QuemSomosRoute
   '/servicos': typeof ServicosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/termos-de-uso': typeof TermosDeUsoRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -109,11 +149,16 @@ export interface FileRoutesById {
   '/contato': typeof ContatoRoute
   '/erro': typeof ErroRoute
   '/especialidades': typeof EspecialidadesRoute
+  '/lgpd': typeof LgpdRoute
+  '/mapa-do-site': typeof MapaDoSiteRoute
   '/obrigado': typeof ObrigadoRoute
+  '/politica-de-cookies': typeof PoliticaDeCookiesRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/projetos': typeof ProjetosRoute
   '/quem-somos': typeof QuemSomosRoute
   '/servicos': typeof ServicosRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/termos-de-uso': typeof TermosDeUsoRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -124,11 +169,16 @@ export interface FileRouteTypes {
     | '/contato'
     | '/erro'
     | '/especialidades'
+    | '/lgpd'
+    | '/mapa-do-site'
     | '/obrigado'
+    | '/politica-de-cookies'
+    | '/politica-de-privacidade'
     | '/projetos'
     | '/quem-somos'
     | '/servicos'
     | '/sitemap.xml'
+    | '/termos-de-uso'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
@@ -137,11 +187,16 @@ export interface FileRouteTypes {
     | '/contato'
     | '/erro'
     | '/especialidades'
+    | '/lgpd'
+    | '/mapa-do-site'
     | '/obrigado'
+    | '/politica-de-cookies'
+    | '/politica-de-privacidade'
     | '/projetos'
     | '/quem-somos'
     | '/servicos'
     | '/sitemap.xml'
+    | '/termos-de-uso'
     | '/blog/$slug'
     | '/blog'
   id:
@@ -150,11 +205,16 @@ export interface FileRouteTypes {
     | '/contato'
     | '/erro'
     | '/especialidades'
+    | '/lgpd'
+    | '/mapa-do-site'
     | '/obrigado'
+    | '/politica-de-cookies'
+    | '/politica-de-privacidade'
     | '/projetos'
     | '/quem-somos'
     | '/servicos'
     | '/sitemap.xml'
+    | '/termos-de-uso'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesById: FileRoutesById
@@ -164,17 +224,29 @@ export interface RootRouteChildren {
   ContatoRoute: typeof ContatoRoute
   ErroRoute: typeof ErroRoute
   EspecialidadesRoute: typeof EspecialidadesRoute
+  LgpdRoute: typeof LgpdRoute
+  MapaDoSiteRoute: typeof MapaDoSiteRoute
   ObrigadoRoute: typeof ObrigadoRoute
+  PoliticaDeCookiesRoute: typeof PoliticaDeCookiesRoute
+  PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
   ProjetosRoute: typeof ProjetosRoute
   QuemSomosRoute: typeof QuemSomosRoute
   ServicosRoute: typeof ServicosRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TermosDeUsoRoute: typeof TermosDeUsoRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/termos-de-uso': {
+      id: '/termos-de-uso'
+      path: '/termos-de-uso'
+      fullPath: '/termos-de-uso'
+      preLoaderRoute: typeof TermosDeUsoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -203,11 +275,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjetosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/politica-de-privacidade': {
+      id: '/politica-de-privacidade'
+      path: '/politica-de-privacidade'
+      fullPath: '/politica-de-privacidade'
+      preLoaderRoute: typeof PoliticaDePrivacidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politica-de-cookies': {
+      id: '/politica-de-cookies'
+      path: '/politica-de-cookies'
+      fullPath: '/politica-de-cookies'
+      preLoaderRoute: typeof PoliticaDeCookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/obrigado': {
       id: '/obrigado'
       path: '/obrigado'
       fullPath: '/obrigado'
       preLoaderRoute: typeof ObrigadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mapa-do-site': {
+      id: '/mapa-do-site'
+      path: '/mapa-do-site'
+      fullPath: '/mapa-do-site'
+      preLoaderRoute: typeof MapaDoSiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lgpd': {
+      id: '/lgpd'
+      path: '/lgpd'
+      fullPath: '/lgpd'
+      preLoaderRoute: typeof LgpdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/especialidades': {
@@ -260,11 +360,16 @@ const rootRouteChildren: RootRouteChildren = {
   ContatoRoute: ContatoRoute,
   ErroRoute: ErroRoute,
   EspecialidadesRoute: EspecialidadesRoute,
+  LgpdRoute: LgpdRoute,
+  MapaDoSiteRoute: MapaDoSiteRoute,
   ObrigadoRoute: ObrigadoRoute,
+  PoliticaDeCookiesRoute: PoliticaDeCookiesRoute,
+  PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
   ProjetosRoute: ProjetosRoute,
   QuemSomosRoute: QuemSomosRoute,
   ServicosRoute: ServicosRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TermosDeUsoRoute: TermosDeUsoRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
