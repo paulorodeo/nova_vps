@@ -15,8 +15,9 @@ services:
       # Exposto apenas no loopback: o proxy reverso (Nginx/OpenLiteSpeed) publica o site
       - "127.0.0.1:${PORT:-3000}:${PORT:-3000}"
     healthcheck:
-      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:'+(process.env.PORT||3000)+'/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      # wget faz parte do busybox da imagem node:24-alpine
+      test: ["CMD-SHELL", "wget --spider -q http://127.0.0.1:3000/robots.txt || exit 1"]
       interval: 30s
       timeout: 5s
       retries: 3
-      start_period: 15s
+      start_period: 30s
