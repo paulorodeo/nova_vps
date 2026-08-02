@@ -12,4 +12,8 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Versão VPS: build gera um servidor Node autônomo (.output/server/index.mjs).
+  // Dentro do sandbox do editor Lovable o preset Cloudflare continua sendo forçado
+  // internamente; fora dele (Docker/VPS) vale o preset abaixo.
+  nitro: { preset: "node-server" },
 });
