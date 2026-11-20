@@ -86,7 +86,12 @@
   },
   "pnpm": {
     "overrides": {
-      "@tanstack/router-core": "1.171.15"
+      "@tanstack/router-core": "1.171.15",
+      "seroval": "^1.6.0"
     }
+  },
+  "overrides": {
+    "seroval": "^1.6.0",
+    "seroval-plugins": "^1.6.0"
   }
 }
